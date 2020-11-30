@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Biểu mẫu</title>
+</head>
+<body>
+<div class="container">
+    <form action="{% url 'chandoan' %}" method="POST">
+        {% csrf_token %}
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3>Chẩn đoán bệnh béo phì</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- 0 -->
+                            <div class="col-md-3">
+                                <label>Giới tính</label>
+                                <div class="form-check">
+                                    <div class="row">
+                                        <div class="form-check col-md-6">
+                                            <input class="form-check-input" type="radio" name="Gender" id="Gender_Male" value="Male" checked>
+                                            <label class="form-check-label" for="Gender_Male">Nam</label>
+                                        </div>
+                                        <div class="form-check col-md-6">
+                                            <input class="form-check-input" type="radio" name="Gender" id="Gender_Female" value="Female">
+                                            <label class="form-check-label" for="Gender_Female">Nữ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 1 -->
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Age">Tuổi</label>
+                                    <input type="number" class="form-control" id="Age" name="Age" value="0" min="0">
+                                </div>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Height">Chiều cao (m)</label>
+                                    <input type="number" class="form-control" id="Height" name="Height" value="0" min="0" step="0.01">
+                                </div>
+                            </div>
+
+                            <!-- 3 -->
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="Weight">Cân nặng (kg)</label>
+                                    <input type="number" class="form-control" id="Weight" name="Weight" value="0" min="0">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 4 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="family_history_with_overweight">Gia đình bạn có người bị thừa cân không?</label>
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio"
+                                               name="family_history_with_overweight" id="family_history_with_overweight_yes" value="yes">
+                                        <label class="form-check-label" for="family_history_with_overweight_yes">Có</label>
+                                    </div>
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio"
+                                               name="family_history_with_overweight" id="family_history_with_overweight_no" value="no" checked>
+                                        <label class="form-check-label" for="family_history_with_overweight_no">Không</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="FCVC">Bạn có thường ăn rau trong bữa ăn?</label>
+                            <select class="form-control" id="FCVC" name="FCVC">
+                                <option value="Never">Không</option>
+                                <option value="Sometimes">Đôi khi</option>
+                                <option value="Always">Thường xuyên</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="NCP">Số bữa ăn chính của bạn trong ngày?</label>
+                            <select class="form-control" id="NCP" name="NCP">
+                                <option value="1 to 2">1 đến 2 bữa</option>
+                                <option value="2 to 3">2 đến 3 bữa</option>
+                                <option value="more 3">Nhiều hơn 3 bữa</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 5 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="FAVC">Bạn có thường ăn thức ăn chứa nhiều calo?</label>
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="FAVC" id="FAVC_yes" value="yes">
+                                        <label class="form-check-label" for="FAVC_yes">Có</label>
+                                    </div>
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="FAVC" id="FAVC_no" value="no" checked>
+                                        <label class="form-check-label" for="FAVC_no">Không</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CAEC">Thường ăn bất kỳ món ăn nào trong bữa ăn?</label>
+                            <select class="form-control" id="CAEC" name="CAEC">
+                                <option value="no">Không</option>
+                                <option value="Sometimes">Đôi khi</option>
+                                <option value="Frequently">Thường xuyên</option>
+                                <option value="Always">Luôn luôn</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 10 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CH2O">Bạn uống bao nhiêu nước hàng ngày?</label>
+                            <select class="form-control" id="CH2O" name="CH2O">
+                                <option value="less 1">Ít hơn 1 lít</option>
+                                <option value="1 to 2">1 đến 2 lít</option>
+                                <option value="more 2">Nhiều hơn 2 lít</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 9 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="SMOKE">Bạn có hút thuốc không?</label>
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="SMOKE" id="SMOKE_yes" value="yes">
+                                        <label class="form-check-label" for="Gender_Male">Có</label>
+                                    </div>
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="SMOKE" id="SMOKE_no" value="no" checked>
+                                        <label class="form-check-label" for="Gender_Female">Không</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 12 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="FAF">Bạn có thường hoạt động thể chất?</label>
+                            <select class="form-control" id="FAF" name="FAF">
+                                <option value="0">Không</option>
+                                <option value="1 to 2">1 đến 2 ngày</option>
+                                <option value="2 to 4">2 đến 4 ngày</option>
+                                <option value="4 to 5">4 đến 5 ngày</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 13 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="TUE">Thời gian sử dụng thiết bị công nghệ?</label>
+                            <select class="form-control" id="TUE" name="TUE">
+                                <option value="0 to 2">0 đến 2 giờ</option>
+                                <option value="3 to 5">3 đến 5 giờ</option>
+                                <option value="more 5">Nhiều hơn 5 giờ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 11 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="SCC">Bạn có theo dõi lượng calo tiêu thụ hàng ngày?</label>
+                            <div class="form-check">
+                                <div class="row">
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="SCC" id="SCC_yes" value="yes">
+                                        <label class="form-check-label" for="SCC_yes">Có</label>
+                                    </div>
+                                    <div class="form-check col-md-6">
+                                        <input class="form-check-input" type="radio" name="SCC" id="SCC_no" value="no" checked>
+                                        <label class="form-check-label" for="SCC_no">Không</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 14 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="CALC">Bạn có thường uống rượu không?</label>
+                            <select class="form-control" id="CALC" name="CALC">
+                                <option value="no">Không</option>
+                                <option value="Sometimes">Đôi khi</option>
+                                <option value="Frequently">Thường xuyên</option>
+                                <option value="Always">Luôn luôn</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 15 -->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="MTRANS">Phương tiện di chuyển hàng ngày?</label>
+                            <select class="form-control" id="MTRANS" name="MTRANS">
+                                <option value="Automobile">Ô tô</option>
+                                <option value="Bike">Xe đạp</option>
+                                <option value="Motorbike">Xe máy</option>
+                                <option value="Public_Transportation">Phương tiện công cộng</option>
+                                <option value="Walking">Đi bộ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="modalPredict" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chẩn đoán</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ predict }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+<script>
+    $('#modalPredict').modal('show')
+</script>
+</body>
+</html>
